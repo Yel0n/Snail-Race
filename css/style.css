@@ -4,13 +4,15 @@
   box-sizing: border-box; }
 
 html, body {
-  background-color: black; }
+  background-color: black;
+  color: white;
+  font-family: Ubuntu; }
 
 #game {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 70px; }
+  margin-top: 60px; }
 
 .game {
   width: 1200px;

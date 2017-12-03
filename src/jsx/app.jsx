@@ -1,7 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Router,
+    Route,
+    Link,
+    IndexLink,
+    IndexRoute,
+    hashHistory
+} from 'react-router';
 
 document.addEventListener('DOMContentLoaded', function(){
+
+    class Main extends React.Component{
+        render(){
+            return (
+                <div>
+                    <div>Player 1 name: <input placeholder='Player 1'/></div>
+                    <div>Player 2 name: <input placeholder='Player 2'/></div>
+                    <div><Link to='/game'>START GAME</Link></div>
+                </div>
+            )
+        }
+    }
 
     class Game extends React.Component{
         constructor(props){
@@ -69,9 +88,26 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 
+    class Template extends React.Component{
+        render(){
+            return (
+                <div>
+                    {this.props.children}
+                </div>
+            )
+        }
+    }
+
     class App extends React.Component{
         render(){
-            return <Game/>
+            return (
+                <Router history={hashHistory}>
+                    <Route path='/' component={Template}>
+                        <IndexRoute component={Main}/>
+                        <Route path='/game' component={Game}/>
+                    </Route>
+                </Router>
+            )
         }
     }
 
